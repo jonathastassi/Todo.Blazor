@@ -1,0 +1,43 @@
+@page "/todo"
+
+<div class="header-title">
+    <h2>Todo</h2>
+    <button class="btn btn-link" @onclick="addTodo">Adicionar</button>
+</div>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Tarefa</th>
+            <th>Done</th>
+            <th>Criado em</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Teste</td>
+            <td>S</td>
+            <td>22/12/1992</td>
+            <td>
+                <button class="btn btn-warning btn-sm">Editar</button>
+                <button class="btn btn-danger btn-sm">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<Modal @ref="modal">
+    <Title>@title</Title>
+</Modal>
+
+@code {
+    private Modal modal { get; set; }
+    private string title { get; set; }
+
+    public void addTodo()
+    {
+        title = "New Todo";
+        modal.Open();
+    }
+}
