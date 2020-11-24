@@ -1,8 +1,23 @@
 @inherits LayoutComponentBase
 
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand">Todo List</a>
+        <NavLink class="navbar-brand" href="/">Todo List</NavLink>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <NavLink class="nav-link" href="/">Home</NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/todo">Lista de Todos</NavLink>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </nav>
 
