@@ -9,11 +9,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                @Content
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="Close">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                @Footer
             </div>
         </div>
     </div>
@@ -32,6 +32,12 @@
     [Required]
     [Parameter]
     public RenderFragment Title { get; set; }
+
+    [Parameter]
+    public RenderFragment Content { get; set; }
+
+    [Parameter]
+    public RenderFragment Footer { get; set; }
 
     public void Open()
     {

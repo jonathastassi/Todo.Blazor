@@ -1,0 +1,66 @@
+{
+  "todos": [
+    {
+      "id": 4,
+      "Title": "Molestiae omnis ad ut earum.",
+      "Done": true,
+      "CreatedAt": "2020-08-16T12:00:09.445Z",
+      "UserId": 4
+    },
+    {
+      "id": 5,
+      "Title": "Est minus modi tempora labore a impedit nulla.",
+      "Done": true,
+      "CreatedAt": "2021-07-20T01:05:02.822Z",
+      "UserId": 4
+    },
+    {
+      "Id": 0,
+      "Title": "wefwef",
+      "Done": false,
+      "CreatedAt": "2020-11-24T11:52:11.113-03:00",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "Title": "JTS1",
+      "Done": false,
+      "CreatedAt": "2020-11-24T11:54:28.198-03:00",
+      "UserId": 3
+    },
+    {
+      "id": 11,
+      "Title": "wef1",
+      "Done": false,
+      "CreatedAt": "2020-11-27T00:00:00",
+      "UserId": 3
+    },
+    {
+      "id": 12,
+      "Title": "ewfwef 123",
+      "Done": true,
+      "CreatedAt": "2020-11-24T12:18:27.007-03:00",
+      "UserId": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 2,
+      "name": "Rickey Bartell",
+      "email": "ewald_jacobi50@hotmail.com",
+      "password": "$2a$10$nNRP9M7vqr1Z0b6cQKvIFOTxPj7hnF8AmnOz1etMPH1cdA8oxXCF."
+    },
+    {
+      "id": 3,
+      "name": "Leroy Keeling",
+      "email": "scot.brakus@hotmail.com",
+      "password": "$2a$10$nNRP9M7vqr1Z0b6cQKvIFOTxPj7hnF8AmnOz1etMPH1cdA8oxXCF."
+    },
+    {
+      "id": 4,
+      "name": "Brett Schinner",
+      "email": "marielle.konopelski38@hotmail.com",
+      "password": "$2a$10$nNRP9M7vqr1Z0b6cQKvIFOTxPj7hnF8AmnOz1etMPH1cdA8oxXCF."
+    }
+  ]
+}
