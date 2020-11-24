@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Refit;
 using todo.Models;
+using todo.ViewModels;
 
 namespace todo.Services
 {
@@ -18,5 +19,8 @@ namespace todo.Services
 
         [Put("/todos/{todoId}")]
         Task PutTodo(int todoId, Todo todo);
+
+        [Post("/login")]
+        Task<AuthInfo> Login(LoginForm login);
     }
 }

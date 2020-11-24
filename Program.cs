@@ -19,14 +19,24 @@ namespace todo
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped<ITodoService, TodoService>();
+            builder.Services.AddOptions();
+            builder.Services.AddAuthorizationCore();    
+
+            builder.Services
+                .AddScoped<ITodoService, TodoService>()
+                .AddScoped<IAuthenticationService, AuthenticationService>()
+                .AddScoped<ILocalStorageService, LocalStorageService>();
 
             var settings = new RefitSettings();
             // builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddRefitClient<IWebApi>(settings)
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://localhost:3000/"));
 
-            await builder.Build().RunAsync();
+            var host = builder.Build();
+            var authenticationService = host.Services.GetRequiredService<IAuthenticationService>();
+            await authenticationService.Initialize();
+
+            await host.RunAsync();
         }
     }
 }
