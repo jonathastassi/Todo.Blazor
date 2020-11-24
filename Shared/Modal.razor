@@ -1,4 +1,8 @@
 @using System.ComponentModel.DataAnnotations
+
+<h1>Modal</h1>
+<h2>@modalDisplay</h2>
+
 <div class="modal @modalClass" tabindex="-1" style="display:@modalDisplay; overflow-y: auto;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -44,7 +48,6 @@
         modalDisplay = "block;";
         modalClass = "show";
         showBackdrop = true;
-        StateHasChanged();
     }
 
     public void Close()
@@ -52,6 +55,5 @@
         modalDisplay = "none";
         modalClass = "";
         showBackdrop = false;
-        StateHasChanged();
     }
 }

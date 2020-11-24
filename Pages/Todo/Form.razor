@@ -1,0 +1,87 @@
+@using todo.Models
+@inject ITodoService TodoService
+@inject IJSRuntime JS
+
+<Modal @ref="modal">
+    <Title>@title</Title>
+    <Content>
+
+        <EditForm EditContext="@editContext" id="form" OnSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="title">Título</label>
+                    <InputText id="title" class="form-control" @bind-Value="todo.Title" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="done">Concluído</label>
+                    <InputCheckbox id="done" style="zoom: 2; display: block;" @bind-Value="todo.Done" />
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="createdAt">Criado em</label>
+                    <InputDate id="createdAt" class="form-control" @bind-Value="todo.CreatedAt"
+                        @bind-Value:format="dd/MM/yyyy" />
+                </div>
+            </div>
+
+        </EditForm>
+    </Content>
+    <Footer>
+        <button type="submit" form="form" class="btn btn-primary">Salvar</button>
+    </Footer>
+</Modal>
+
+@code {
+    private EditContext editContext;
+    private string title { get; set; }
+    private Modal modal { get; set; }
+    private Todo todo = new Todo();
+
+    [Parameter]
+    public EventCallback OnClickCallback { get; set; }
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(todo);
+    }
+
+    public void Open(string title, Todo todo)
+    {
+        this.title = title;
+        this.SetEntity(todo);
+        modal.Open();
+    }
+
+    private void SetEntity(Todo todo)
+    {
+        this.todo.id = todo.id;
+        this.todo.Title = todo.Title;
+        this.todo.Done = todo.Done;
+        this.todo.CreatedAt = todo.CreatedAt;
+    }
+
+    public async Task HandleValidSubmit()
+    {
+        var isValid = editContext.Validate();
+
+        if (isValid)
+        {
+            if (this.todo.id == 0)
+            {
+                await TodoService.Post(todo);
+                await this.JS.InvokeVoidAsync("alert", "Registro salvo com sucesso!");
+            }
+            else
+            {
+                await TodoService.Put(this.todo.id, todo);
+                await this.JS.InvokeVoidAsync("alert", "Registro alterado com sucesso!");
+            }
+            await OnClickCallback.InvokeAsync();
+            modal.Close();
+            StateHasChanged();
+        }
+    }
+
+}

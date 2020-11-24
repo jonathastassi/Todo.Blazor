@@ -1,10 +1,10 @@
 @page "/todo"
 @attribute [Authorize]
 
-@using todo.Models
 @using Microsoft.JSInterop
 @inject ITodoService TodoService
 @inject IJSRuntime JS
+@using todo.Models
 
 <div class="header-title">
     <h2>Todo</h2>
@@ -38,113 +38,48 @@
     </tbody>
 </table>
 
-<Modal @ref="modal">
-    <Title>@title</Title>
-    <Content>
-
-        <EditForm EditContext="@editContext" id="form" OnSubmit="@HandleValidSubmit">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-
-            <div class="row">
-                <div class="col-md-12 form-group">
-                    <label for="title">Título</label>
-                    <InputText id="title" class="form-control" @bind-Value="todo.Title" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label for="done">Concluído</label>
-                    <InputCheckbox id="done" style="zoom: 2; display: block;" @bind-Value="todo.Done"/>
-                </div>
-                <div class="col-md-6 form-group">
-                    <label for="createdAt">Criado em</label>
-                    <InputDate id="createdAt" class="form-control" @bind-Value="todo.CreatedAt" @bind-Value:format="dd/MM/yyyy"/>
-                </div>
-            </div>
-
-
-        </EditForm>
-
-    </Content>
-    <Footer>
-        <button  type="submit" form="form" class="btn btn-primary">Salvar</button>
-    </Footer>
-</Modal>
+<Form @ref="form" OnClickCallback="@refreshData" />
 
 @code {
-    private Modal modal { get; set; }
-    private string title { get; set; }
+    private Form form { get; set; }
     private List<Todo> todos { get; set; } = new List<Todo>();
-
-    private Todo todo = new Todo();
-
-    private EditContext editContext;
-
-    protected override void OnInitialized() 
-    {
-        editContext = new EditContext(todo);
-    }
 
     protected override async Task OnInitializedAsync()
     {
         await getData();
     }
 
+    public void addTodo()
+    {
+        form.Open("New Todo", new Todo());
+    }
+
+    private async void refreshData()
+    {
+        await getData();
+        StateHasChanged();  
+    }
+
     private async Task getData()
     {
-        todos = await TodoService.Get();        
+        todos = await TodoService.Get();
     }
 
     public async Task DeleteItem(Todo todo)
     {
         var confirm = await this.JS.InvokeAsync<bool>("confirm", "Deseja excluir o registro selecionado?");
 
-        if (confirm) {
+        if (confirm)
+        {
             await TodoService.Delete(todo.id);
-            await getData();            
+            await getData();
             await this.JS.InvokeVoidAsync("alert", "Registro excluído com sucesso!");
         }
     }
 
-    public void addTodo()
+
+    public void EditItem(Todo todo)
     {
-       this.SetEntity(new Todo());
-
-        title = "New Todo";
-        modal.Open();
-    }
-
-    private void SetEntity(Todo todo) 
-    {
-        this.todo.id = todo.id;
-        this.todo.Title = todo.Title;
-        this.todo.Done = todo.Done;
-        this.todo.CreatedAt = todo.CreatedAt;
-    }
-
-    public void EditItem(Todo todo) 
-    {
-       this.SetEntity(new Todo(todo.id, todo.Title, todo.Done, todo.CreatedAt));
-
-        modal.Open();
-    }
-
-    public async Task HandleValidSubmit() 
-    {
-        var isValid = editContext.Validate();
-
-        if (isValid)
-        {
-            if (this.todo.id == 0) 
-            {
-                await TodoService.Post(todo);
-                await this.JS.InvokeVoidAsync("alert", "Registro salvo com sucesso!");  
-            }
-            else {
-                await TodoService.Put(this.todo.id, todo);
-                await this.JS.InvokeVoidAsync("alert", "Registro alterado com sucesso!");  
-            }
-            await getData();   
-            modal.Close();       
-        }
+        form.Open("Edit Todo", todo);
     }
 }
