@@ -10,8 +10,10 @@ namespace todo.Services
 {
     public interface IAuthenticationService
     {
-        AuthInfo AuthInfo { get; }
+        AuthInfo AuthInfo { get; set; }
         Task Initialize();
+        void SetEmail(string email);
+
         Task<AuthInfo> Login(LoginForm login);
         Task<AuthInfo> Register(User login);
 
@@ -24,7 +26,7 @@ namespace todo.Services
         private readonly ILocalStorageService localStorageService;
         private readonly NavigationManager navigationManager;
 
-        public AuthInfo AuthInfo { get; private set; }
+        public AuthInfo AuthInfo { get; set; }
 
         public AuthenticationService(IWebApi webApi, ILocalStorageService localStorageService, NavigationManager navigationManager)
         {
@@ -81,6 +83,11 @@ namespace todo.Services
 
             await this.localStorageService.SetItem("todo:auth", authInfo);
             return response;
+        }
+
+        public void SetEmail(string email)
+        {
+            this.AuthInfo.email = email;
         }
     }
 }

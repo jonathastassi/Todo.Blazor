@@ -18,10 +18,14 @@
                     <li class="nav-item">
                         <NavLink class="nav-link" href="/todo">Lista de Todos</NavLink>
                     </li>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="/category">Lista de Categorias</NavLink>
+                    </li>
                 </ul>
             </div>
             <span class="navbar-text mr-3">
-                @AuthenticationService.AuthInfo.email
+                @AuthInfo.email
+                <input type="text" @bind-value:event="oninput" @bind-value="AuthInfo.email">
             </span>
             <button class="btn btn-primary my-2 my-sm-0" @onclick="HandleLogout">Sair</button>
 
@@ -34,6 +38,8 @@
 </div>
 
 @code {
+    ViewModels.AuthInfo AuthInfo => AuthenticationService.AuthInfo;
+
     public async void HandleLogout()
     {
         await this.AuthenticationService.Logout();

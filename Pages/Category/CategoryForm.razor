@@ -1,6 +1,8 @@
 @using todo.Models
-@inject ITodoService TodoService
+@inject ICategoryService CategoryService
 @inject IJSRuntime JS
+
+@implements IFormBase<CategoryModel>
 
 <Modal @ref="modal">
     <Title>@title</Title>
@@ -12,16 +14,12 @@
 
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <label for="title">Título</label>
-                    <InputText id="title" class="form-control" @bind-Value="todo.Title" />
-                </div>
-                <div class="col-md-6 form-group">
-                    <label for="done">Concluído</label>
-                    <InputCheckbox id="done" style="zoom: 2; display: block;" @bind-Value="todo.Done" />
+                    <label for="name">Título</label>
+                    <InputText id="name" class="form-control" @bind-Value="category.Name" />
                 </div>
                 <div class="col-md-6 form-group">
                     <label for="createdAt">Criado em</label>
-                    <InputDate id="createdAt" class="form-control" @bind-Value="todo.CreatedAt"
+                    <InputDate id="createdAt" class="form-control" @bind-Value="category.CreatedAt"
                         @bind-Value:format="dd/MM/yyyy" />
                 </div>
             </div>
@@ -37,29 +35,33 @@
     private EditContext editContext;
     private string title { get; set; }
     private Modal modal { get; set; }
-    private TodoModel todo = new TodoModel();
+    private CategoryModel category = new CategoryModel();
 
-    [Parameter]
-    public EventCallback OnClickCallback { get; set; }
+    @* [Parameter]
+        public EventCallback OnClickCallback { get; set; } *@
 
     protected override void OnInitialized()
     {
-        editContext = new EditContext(todo);
+        editContext = new EditContext(category);
     }
 
-    public void Open(string title, TodoModel todo)
+    public void Open(string title, CategoryModel model)
     {
+        if (model == null)
+        {
+            model = new CategoryModel();
+        }
         this.title = title;
-        this.SetEntity(todo);
+        this.SetEntity(model);
         modal.Open();
+        StateHasChanged();
     }
 
-    private void SetEntity(TodoModel todo)
+    private void SetEntity(CategoryModel category)
     {
-        this.todo.id = todo.id;
-        this.todo.Title = todo.Title;
-        this.todo.Done = todo.Done;
-        this.todo.CreatedAt = todo.CreatedAt;
+        this.category.id = category.id;
+        this.category.Name = category.Name;
+        this.category.CreatedAt = category.CreatedAt;
     }
 
     public async Task HandleValidSubmit()
@@ -68,19 +70,18 @@
 
         if (isValid)
         {
-            if (this.todo.id == 0)
+            if (this.category.id == 0)
             {
-                await TodoService.Post(todo);
+                await CategoryService.Post(category);
                 await this.JS.InvokeVoidAsync("alert", "Registro salvo com sucesso!");
             }
             else
             {
-                await TodoService.Put(this.todo.id, todo);
+                await CategoryService.Put(category.id, category);
                 await this.JS.InvokeVoidAsync("alert", "Registro alterado com sucesso!");
             }
-            await OnClickCallback.InvokeAsync();
+            @* await OnClickCallback.InvokeAsync(); *@
             modal.Close();
-            @* StateHasChanged(); *@
         }
     }
 

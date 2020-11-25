@@ -1,0 +1,32 @@
+@typeparam TModel
+@typeparam TForm
+@typeparam TList
+
+<div class="header-title">
+    <h2>@TitleHeader</h2>
+    <button class="btn btn-link" @onclick="HandleAdd">Adicionar</button>
+</div>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            @Header
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (int i = 0; i < registers.Count; i++)
+        {
+            TModel todo = registers[i];
+
+            <tr>
+                @Body(todo)
+                <td style="width: 220px;">
+                    <button class="btn btn-warning btn-sm" @onclick="@(() => EditItem(todo))">Editar</button>
+                    <button class="btn btn-danger btn-sm" @onclick="@(() => DeleteItem(todo))">Excluir</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

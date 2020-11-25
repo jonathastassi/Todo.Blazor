@@ -19,7 +19,7 @@ namespace todo.Services
             this.userId = int.Parse(this.authenticationService.AuthInfo.sub);
         }
 
-        public async Task<List<Todo>> Get()
+        public async Task<List<TodoModel>> Get()
         {
             var response = await this.webApi.GetTodos(this.userId);
             return response;
@@ -30,13 +30,13 @@ namespace todo.Services
             await this.webApi.DeleteTodo(todoId);
         }
 
-        public async Task Post(Todo todo)
+        public async Task Post(TodoModel todo)
         {
             todo.UserId = this.userId;
             await this.webApi.PostTodo(todo);
         }
 
-        public async Task Put(int todoId, Todo todo)
+        public async Task Put(int todoId, TodoModel todo)
         {
             todo.UserId = this.userId;
             await this.webApi.PutTodo(todoId, todo);

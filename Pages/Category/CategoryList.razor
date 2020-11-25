@@ -1,0 +1,18 @@
+@page "/category"
+@using todo.Models
+@inject ICategoryService CategoryService
+
+<BaseList TitleHeader="Category" NameModel="Categoria" TModel="CategoryModel" Parent="this" TForm="CategoryForm"
+    TList="CategoryList" Service="CategoryService">
+    <Header>
+        <th>Título</th>
+        <th>Criado em</th>
+    </Header>
+
+    <Body Context="category">
+        <td>@category.Name</td>
+        <td>@category.CreatedAt</td>
+    </Body>
+</BaseList>
+
+<CategoryForm @ref="formRef" />

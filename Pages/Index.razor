@@ -3,3 +3,17 @@
 @inject IAuthenticationService AuthenticationService
 
 <h1>Hello, world!</h1>
+
+<button @onclick="trocar">Trocar Email</button>
+
+@code {
+
+    ViewModels.AuthInfo AuthInfo => AuthenticationService.AuthInfo;
+
+    public void trocar()
+    {
+        AuthenticationService.AuthInfo.email = "trocando email";
+        @* StateHasChanged(); *@
+        Console.WriteLine(AuthenticationService.AuthInfo.email);
+    }
+}

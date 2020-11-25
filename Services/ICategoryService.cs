@@ -3,7 +3,7 @@ using todo.Models;
 
 namespace todo.Services
 {
-    public interface ITodoService : IServiceBase<TodoModel>
+    public interface ICategoryService : IServiceBase<CategoryModel>
     {
 
     }

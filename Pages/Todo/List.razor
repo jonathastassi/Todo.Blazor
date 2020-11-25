@@ -42,7 +42,7 @@
 
 @code {
     private Form form { get; set; }
-    private List<Todo> todos { get; set; } = new List<Todo>();
+    private List<TodoModel> todos { get; set; } = new List<TodoModel>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -51,13 +51,13 @@
 
     public void addTodo()
     {
-        form.Open("New Todo", new Todo());
+        form.Open("New Todo", new TodoModel());
     }
 
     private async void refreshData()
     {
         await getData();
-        StateHasChanged();  
+        StateHasChanged();
     }
 
     private async Task getData()
@@ -65,7 +65,7 @@
         todos = await TodoService.Get();
     }
 
-    public async Task DeleteItem(Todo todo)
+    public async Task DeleteItem(TodoModel todo)
     {
         var confirm = await this.JS.InvokeAsync<bool>("confirm", "Deseja excluir o registro selecionado?");
 
@@ -78,7 +78,7 @@
     }
 
 
-    public void EditItem(Todo todo)
+    public void EditItem(TodoModel todo)
     {
         form.Open("Edit Todo", todo);
     }

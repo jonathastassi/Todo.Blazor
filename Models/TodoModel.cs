@@ -1,20 +1,17 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using todo.Base;
 
 namespace todo.Models
 {
-    public class Todo
+    public class TodoModel : ModelBase
     {
-        public int id { get; set; }
-
         [Required]
         [StringLength(30, ErrorMessage = "Título muito longo.")]
         public string Title { get; set; }
         public bool Done { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public int UserId { get; set; }
 
-        public Todo()
+        public TodoModel()
         {
             id = 0;
             Title = "";
@@ -22,7 +19,7 @@ namespace todo.Models
             CreatedAt = DateTime.Now;
         }
 
-        public Todo(int id, string title, bool done, DateTime createdAt)
+        public TodoModel(int id, string title, bool done, DateTime createdAt)
         {
             this.id = id;
             Title = title;

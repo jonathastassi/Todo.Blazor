@@ -1,7 +1,7 @@
 const faker = require('faker');
 const bcrypt = require('bcryptjs');
 
-const database = { todos: [], users: []};
+const database = { todos: [], categories: [], users: []};
 
 const salt = bcrypt.genSaltSync(10);
 const hash = bcrypt.hashSync("123456", salt);
@@ -33,7 +33,15 @@ for (var i = 1; i<= 5; i++) {
         UserId: quantityUsers,
     });
 
+    database.categories.push({
+        id: i,
+        Title: faker.lorem.sentence(),
+        CreatedAt: faker.date.past(),
+        UserId: quantityUsers,
+    });
+
     quantityTodosOfUser--;
 }
+
 
 console.log(JSON.stringify(database));

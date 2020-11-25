@@ -2,102 +2,91 @@
   "todos": [
     {
       "id": 1,
-      "Title": "Aut laborum facilis dolor velit earum hic ut dolor vitae.",
+      "Title": "Ratione eveniet sit et.",
       "Done": false,
-      "CreatedAt": "2021-11-06T17:02:04.062Z",
+      "CreatedAt": "2019-12-27T19:09:50.831Z",
       "UserId": 2
     },
     {
       "id": 2,
-      "Title": "Qui ut et.",
+      "Title": "Ratione incidunt et rerum.",
       "Done": false,
-      "CreatedAt": "2021-06-10T15:33:10.884Z",
+      "CreatedAt": "2020-08-06T04:49:17.091Z",
+      "UserId": 2
+    },
+    {
+      "id": 3,
+      "Title": "Et aut est aut blanditiis esse est.",
+      "Done": true,
+      "CreatedAt": "2021-05-28T06:49:24.415Z",
+      "UserId": 2
+    },
+    {
+      "id": 4,
+      "Title": "Perspiciatis ad expedita dignissimos architecto quas nam quos voluptatem sequi.",
+      "Done": false,
+      "CreatedAt": "2020-02-16T11:49:50.573Z",
       "UserId": 2
     },
     {
       "id": 5,
-      "Title": "Deserunt qui rerum qui ipsum aut expedita.",
+      "Title": "Laudantium repellat nihil cum commodi praesentium pariatur.",
       "Done": true,
-      "CreatedAt": "2020-06-12T13:06:11.558Z",
-      "UserId": 4
+      "CreatedAt": "2021-04-25T21:50:21.295Z",
+      "UserId": 3
     },
     {
-      "id": 7,
       "Title": "wefwef",
-      "Done": false,
-      "CreatedAt": "2020-11-24T17:41:49.157-03:00",
-      "UserId": 3
-    },
+      "Done": true,
+      "id": 6,
+      "CreatedAt": "2020-11-25T14:35:07.441-03:00",
+      "UserId": 5
+    }
+  ],
+  "categories": [
     {
-      "id": 9,
-      "Title": "ergrergewfwefwef",
-      "Done": false,
-      "CreatedAt": "2020-11-24T17:55:29.789-03:00",
-      "UserId": 3
-    },
-    {
-      "id": 10,
-      "Title": "defwef",
-      "Done": false,
-      "CreatedAt": "2020-11-24T18:01:38.679-03:00",
-      "UserId": 3
-    },
-    {
-      "id": 11,
-      "Title": "wefwefwef 1",
-      "Done": false,
-      "CreatedAt": "2020-11-25T08:42:52.146-03:00",
+      "id": 1,
+      "Title": "Aut nesciunt voluptatibus aut.",
+      "CreatedAt": "2020-08-28T16:24:15.310Z",
       "UserId": 2
+    },
+    {
+      "id": 2,
+      "Title": "Numquam officia tenetur temporibus est modi quia mollitia est neque.",
+      "CreatedAt": "2020-08-29T12:42:25.094Z",
+      "UserId": 2
+    },
+    {
+      "id": 3,
+      "Title": "Sunt ipsam aut et consequatur adipisci vel dolor non cupiditate.",
+      "CreatedAt": "2020-09-01T19:19:27.450Z",
+      "UserId": 2
+    },
+    {
+      "id": 4,
+      "Title": "Nobis ut non fuga recusandae.",
+      "CreatedAt": "2020-10-08T11:07:59.479Z",
+      "UserId": 2
+    },
+    {
+      "id": 5,
+      "Title": "Velit in voluptatem est non et ipsam modi.",
+      "CreatedAt": "2020-05-16T15:49:01.556Z",
+      "UserId": 3
     }
   ],
   "users": [
     {
       "id": 2,
-      "name": "Ora Wisoky III",
-      "email": "lori.wilderman17@hotmail.com",
-      "password": "$2a$10$T9rjPTBODJdCTHnHslii3./aTxCWeR/4X802YpMH6Tg9/cns3LEgm"
+      "name": "Kristi Green",
+      "email": "cassie24@hotmail.com",
+      "password": "$2a$10$vaUEHPwH3voo3dN0mOB9wegvYHnNfvFTVqUpwwZCQ4lpVQ/SbeeE6"
     },
     {
       "id": 3,
-      "name": "Sidney Kertzmann",
-      "email": "demetris13@yahoo.com",
-      "password": "$2a$10$T9rjPTBODJdCTHnHslii3./aTxCWeR/4X802YpMH6Tg9/cns3LEgm"
-    },
-    {
-      "id": 4,
-      "name": "Fannie Bahringer",
-      "email": "consuelo.lubowitz@yahoo.com",
-      "password": "$2a$10$T9rjPTBODJdCTHnHslii3./aTxCWeR/4X802YpMH6Tg9/cns3LEgm"
-    },
-    {
-      "email": "jonathastassi@hotmail.com",
-      "password": "$2a$10$3IgcdxMAww8/Yx28/UUNZ.N1Y730hSj1d5vn6q7ucDsDXC4i47hpu",
-      "id": 5,
-      "name": "Jonathas"
-    },
-    {
-      "email": "teste@teste.com.br",
-      "password": "$2a$10$bZdln5hVIHursj8jkMa/7OgMIRO1yYamLWj422w6KV1.OQx9chd6O",
-      "id": 6,
-      "name": "Teste"
-    },
-    {
-      "email": "teste@teste.com.brd",
-      "password": "$2a$10$L/bRi7WFzm0jCNBYpaOX7.I2UivULaAhVH/2vSM2m35QCCJwD0H3G",
-      "id": 7,
-      "name": "Teste"
-    },
-    {
-      "email": "jonathas@tassi.com.br",
-      "password": "$2a$10$FqSwsqq5GJOj/awmr6WhZOt6xkHGONE37t2ha1G9NiVd.x5bApMGC",
-      "id": 8,
-      "name": "Jonathas"
-    },
-    {
-      "email": "aoba@aoba.com",
-      "password": "$2a$10$Y/uCoMRtvvhFLID0O8ho8uVYqkGVV2UaD5HNeVO0qXjGczAcGmqRG",
-      "id": 9,
-      "name": "aoba"
+      "name": "Charlotte Cartwright",
+      "email": "nicola_stark81@yahoo.com",
+      "password": "$2a$10$vaUEHPwH3voo3dN0mOB9wegvYHnNfvFTVqUpwwZCQ4lpVQ/SbeeE6"
     }
   ]
 }

@@ -20,10 +20,11 @@ namespace todo
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddOptions();
-            builder.Services.AddAuthorizationCore();    
+            builder.Services.AddAuthorizationCore();
 
             builder.Services
                 .AddScoped<ITodoService, TodoService>()
+                .AddScoped<ICategoryService, CategoryService>()
                 .AddScoped<IAuthenticationService, AuthenticationService>()
                 .AddScoped<ILocalStorageService, LocalStorageService>();
 

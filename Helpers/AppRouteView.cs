@@ -21,7 +21,8 @@ namespace todo.Helpers
             if (authorize && AuthenticationService.AuthInfo == null)
             {
                 var returnUrl = WebUtility.UrlEncode(new Uri(NavigationManager.Uri).PathAndQuery);
-                NavigationManager.NavigateTo($"login?returnUrl={returnUrl}");
+                // NavigationManager.NavigateTo($"login?returnUrl={returnUrl}");
+                NavigationManager.NavigateTo($"login");
             }
             else
             {
