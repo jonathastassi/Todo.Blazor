@@ -1,3 +1,6 @@
+using System;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using todo.Models;
@@ -10,6 +13,8 @@ namespace todo.Services
         AuthInfo AuthInfo { get; }
         Task Initialize();
         Task<AuthInfo> Login(LoginForm login);
+        Task<AuthInfo> Register(User login);
+
         Task Logout();
     }
 
@@ -36,7 +41,19 @@ namespace todo.Services
         public async Task<AuthInfo> Login(LoginForm login)
         {
             AuthInfo response = await this.webApi.Login(login);
-            await this.localStorageService.SetItem("todo:auth", response);
+
+            var jwt = response.accessToken;
+
+            string[] jwtEncodedSegments = jwt.Split('.');
+            var payloadSegment = jwtEncodedSegments[1];
+
+            var decodePayload = System.Convert.FromBase64String(payloadSegment);
+            var decodedUtf8Payload = Encoding.UTF8.GetString(decodePayload);
+
+            var authInfo = JsonSerializer.Deserialize<AuthInfo>(decodedUtf8Payload.ToString());
+            authInfo.accessToken = jwt;
+
+            await this.localStorageService.SetItem("todo:auth", authInfo);
             return response;
         }
 
@@ -45,6 +62,25 @@ namespace todo.Services
             AuthInfo = null;
             await this.localStorageService.RemoveItem("todo:auth");
             this.navigationManager.NavigateTo("login");
+        }
+
+        public async Task<AuthInfo> Register(User user)
+        {
+            AuthInfo response = await this.webApi.Register(user);
+
+            var jwt = response.accessToken;
+
+            string[] jwtEncodedSegments = jwt.Split('.');
+            var payloadSegment = jwtEncodedSegments[1];
+
+            var decodePayload = System.Convert.FromBase64String(payloadSegment);
+            var decodedUtf8Payload = Encoding.UTF8.GetString(decodePayload);
+
+            var authInfo = JsonSerializer.Deserialize<AuthInfo>(decodedUtf8Payload.ToString());
+            authInfo.accessToken = jwt;
+
+            await this.localStorageService.SetItem("todo:auth", authInfo);
+            return response;
         }
     }
 }

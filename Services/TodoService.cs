@@ -8,16 +8,20 @@ namespace todo.Services
     public class TodoService : ITodoService
     {
         private readonly IWebApi webApi;
+        private readonly IAuthenticationService authenticationService;
 
-        public TodoService(IWebApi webApi)
+        private readonly int userId;
+
+        public TodoService(IWebApi webApi, IAuthenticationService authenticationService)
         {
             this.webApi = webApi;
+            this.authenticationService = authenticationService;
+            this.userId = int.Parse(this.authenticationService.AuthInfo.sub);
         }
 
         public async Task<List<Todo>> Get()
         {
-            int userId = 3;
-            var response = await this.webApi.GetTodos(userId);
+            var response = await this.webApi.GetTodos(this.userId);
             return response;
         }
 
@@ -28,17 +32,13 @@ namespace todo.Services
 
         public async Task Post(Todo todo)
         {
-            int userId = 3;
-
-            todo.UserId = userId;
+            todo.UserId = this.userId;
             await this.webApi.PostTodo(todo);
         }
 
         public async Task Put(int todoId, Todo todo)
         {
-            int userId = 3;
-
-            todo.UserId = userId;
+            todo.UserId = this.userId;
             await this.webApi.PutTodo(todoId, todo);
         }
     }

@@ -20,6 +20,9 @@
                     </li>
                 </ul>
             </div>
+            <span class="navbar-text mr-3">
+                @AuthenticationService.AuthInfo.email
+            </span>
             <button class="btn btn-primary my-2 my-sm-0" @onclick="HandleLogout">Sair</button>
 
         </div>

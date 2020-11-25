@@ -22,5 +22,8 @@ namespace todo.Services
 
         [Post("/login")]
         Task<AuthInfo> Login(LoginForm login);
+
+        [Post("/register")]
+        Task<AuthInfo> Register(User user);
     }
 }
