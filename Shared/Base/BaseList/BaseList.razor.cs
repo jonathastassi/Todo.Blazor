@@ -48,7 +48,7 @@ namespace todo.Shared.Base.BaseList
 
         public void HandleAdd()
         {
-            Parent.formRef.Open("NOva " + NameModel, null);
+            Parent.formRef.Open("Nova " + NameModel, null);
         }
 
 

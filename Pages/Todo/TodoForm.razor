@@ -51,9 +51,14 @@
 
     public void Open(string title, TodoModel todo)
     {
+        if (todo == null)
+        {
+            todo = new TodoModel();
+        }
         this.title = title;
         this.SetEntity(todo);
         modal.Open();
+        StateHasChanged();
     }
 
     private void SetEntity(TodoModel todo)

@@ -6,8 +6,8 @@
 
 @implements IListBase<TodoForm>
 
-<BaseList TitleHeader="Todo" NameModel="Tarefa" TModel="TodoModel" Parent="this" TForm="TodoForm" TList="TodoList"
-    Service="TodoService">
+<BaseList @ref="listRef" TitleHeader="Todo" NameModel="Tarefa" TModel="TodoModel" Parent="this" TForm="TodoForm"
+    TList="TodoList" Service="TodoService">
     <Header>
         <th>Tarefa</th>
         <th>Done</th>
@@ -21,8 +21,14 @@
     </Body>
 </BaseList>
 
-<TodoForm @ref="formRef" />
+<TodoForm @ref="formRef" OnClickCallback="@RefreshData" />
 
 @code {
     public TodoForm formRef { get; set; }
+    public BaseList<TodoModel, TodoForm, TodoList> listRef { get; set; }
+
+    public void RefreshData()
+    {
+        listRef.RefreshData();
+    }
 }

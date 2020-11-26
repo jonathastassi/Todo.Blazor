@@ -41,6 +41,13 @@
       "id": 7,
       "CreatedAt": "2020-11-25T21:04:01.114-03:00",
       "UserId": 5
+    },
+    {
+      "Title": "wefWef",
+      "Done": true,
+      "id": 8,
+      "CreatedAt": "2020-11-26T12:02:28.503-03:00",
+      "UserId": 5
     }
   ],
   "categories": [
@@ -78,6 +85,12 @@
       "Name": "wefwefw",
       "id": 6,
       "CreatedAt": "0001-01-01T00:00:00",
+      "UserId": 5
+    },
+    {
+      "Name": "wefwef",
+      "id": 7,
+      "CreatedAt": "2020-11-26T10:40:52.11-03:00",
       "UserId": 5
     }
   ],

@@ -2,8 +2,8 @@
 @using todo.Models
 @inject ICategoryService CategoryService
 
-<BaseList TitleHeader="Category" NameModel="Categoria" TModel="CategoryModel" Parent="this" TForm="CategoryForm"
-    TList="CategoryList" Service="CategoryService">
+<BaseList @ref="listRef" TitleHeader="Category" NameModel="Categoria" TModel="CategoryModel" Parent="this"
+    TForm="CategoryForm" TList="CategoryList" Service="CategoryService">
     <Header>
         <th>Título</th>
         <th>Criado em</th>
@@ -15,4 +15,4 @@
     </Body>
 </BaseList>
 
-<CategoryForm @ref="formRef" />
+<CategoryForm @ref="formRef" OnClickCallback="@RefreshData" />
