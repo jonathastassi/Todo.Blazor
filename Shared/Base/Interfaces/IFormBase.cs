@@ -1,6 +1,6 @@
-using todo.Models;
+using todo.Shared.Base.Models;
 
-namespace todo.Base
+namespace todo.Shared.Base.Interfaces
 {
     public interface IFormBase<TModel> where TModel : ModelBase
     {

@@ -2,6 +2,8 @@
 @inject ITodoService TodoService
 @inject IJSRuntime JS
 
+@implements IFormBase<TodoModel>
+
 <Modal @ref="modal">
     <Title>@title</Title>
     <Content>

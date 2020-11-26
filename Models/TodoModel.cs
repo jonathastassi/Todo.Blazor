@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using todo.Base;
+using todo.Shared.Base.Models;
 
 namespace todo.Models
 {

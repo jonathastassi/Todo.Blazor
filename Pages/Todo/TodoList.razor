@@ -1,0 +1,28 @@
+@page "/todo"
+
+@inject ITodoService TodoService
+@inject IJSRuntime JS
+@using todo.Models
+
+@implements IListBase<TodoForm>
+
+<BaseList TitleHeader="Todo" NameModel="Tarefa" TModel="TodoModel" Parent="this" TForm="TodoForm" TList="TodoList"
+    Service="TodoService">
+    <Header>
+        <th>Tarefa</th>
+        <th>Done</th>
+        <th>Criado em</th>
+    </Header>
+
+    <Body Context="todo">
+        <td>@todo.Title</td>
+        <td>@(todo.Done ? "Sim" : "Não")</td>
+        <td>@todo.CreatedAt</td>
+    </Body>
+</BaseList>
+
+<TodoForm @ref="formRef" />
+
+@code {
+    public TodoForm formRef { get; set; }
+}

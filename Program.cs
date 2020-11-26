@@ -33,6 +33,9 @@ namespace todo
             builder.Services.AddRefitClient<IWebApi>(settings)
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://localhost:3000/"));
 
+            builder.Services.AddRefitClient<IWebApi>(settings)
+                            .ConfigureHttpClient(c => c.BaseAddress = new Uri("http://localhost:3000/"));
+
             var host = builder.Build();
             var authenticationService = host.Services.GetRequiredService<IAuthenticationService>();
             await authenticationService.Initialize();

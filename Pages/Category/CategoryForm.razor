@@ -37,8 +37,8 @@
     private Modal modal { get; set; }
     private CategoryModel category = new CategoryModel();
 
-    @* [Parameter]
-        public EventCallback OnClickCallback { get; set; } *@
+    [Parameter]
+    public EventCallback OnClickCallback { get; set; }
 
     protected override void OnInitialized()
     {
@@ -80,7 +80,7 @@
                 await CategoryService.Put(category.id, category);
                 await this.JS.InvokeVoidAsync("alert", "Registro alterado com sucesso!");
             }
-            @* await OnClickCallback.InvokeAsync(); *@
+            await OnClickCallback.InvokeAsync();
             modal.Close();
         }
     }

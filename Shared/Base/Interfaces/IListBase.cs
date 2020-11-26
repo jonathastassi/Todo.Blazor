@@ -1,6 +1,6 @@
 using todo.Models;
 
-namespace todo.Base
+namespace todo.Shared.Base.Interfaces
 {
     public interface IListBase<TForm>
     {

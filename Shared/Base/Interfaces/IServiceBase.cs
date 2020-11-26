@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace todo.Base
+namespace todo.Shared.Base.Interfaces
 {
     public interface IServiceBase<T>
     {

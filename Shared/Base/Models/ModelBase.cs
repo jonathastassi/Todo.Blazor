@@ -1,6 +1,6 @@
 using System;
 
-namespace todo.Base
+namespace todo.Shared.Base.Models
 {
     public abstract class ModelBase
     {

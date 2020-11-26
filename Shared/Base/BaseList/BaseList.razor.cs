@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using todo.Shared.Base.Interfaces;
+using todo.Shared.Base.Models;
 
-namespace todo.Base
+namespace todo.Shared.Base.BaseList
 {
     public partial class BaseList<TModel, TForm, TList> : ComponentBase
         where TModel : ModelBase
@@ -46,7 +48,7 @@ namespace todo.Base
 
         public void HandleAdd()
         {
-            Parent.formRef.Open("New Todo", null);
+            Parent.formRef.Open("NOva " + NameModel, null);
         }
 
 
@@ -65,7 +67,7 @@ namespace todo.Base
 
         public void EditItem(TModel todo)
         {
-            Parent.formRef.Open("Edit " + NameModel, todo);
+            Parent.formRef.Open("Editar " + NameModel, todo);
         }
 
         public async void RefreshData()

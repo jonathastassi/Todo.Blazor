@@ -1,5 +1,5 @@
-using todo.Base;
 using todo.Models;
+using todo.Shared.Base.Interfaces;
 
 namespace todo.Services
 {
