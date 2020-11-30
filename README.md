@@ -12,7 +12,9 @@ Para rodar a API, é necessário ter o Node instalado e rodar os seguintes coman
 2. Rode o comando "npm install"
 3. Rode esse comando para gerar os dados fake "npm run generate".
 4. Rode o comando "npm start" para iniciar a API.
+5. Deixe o terminal rodando essa API e abra outro terminal para executar os passos do front (Caso esteja usando vs code).
 
+<br>
 ### Rodando o front
 
 É necessário ter o dotnet 5 instalado. https://dotnet.microsoft.com/download/dotnet/5.0
