@@ -1,4 +1,4 @@
-# Todo.Blazor (Estudo sobre SPA com Blçaz Blazor)
+# Todo.Blazor (Estudo sobre SPA com Blazor)
 
 Essa é uma aplicação contendo um esquema de CRUD genérico utilizando Blazor. <br>
 Existem 2 entidades, uma de "Tarefas - Todo" e outra de "Categorias - Category".
