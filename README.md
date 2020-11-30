@@ -8,7 +8,7 @@ Existe uma API fake para servir o front, foi feito com json-server rodando com n
 <br><br>
 Para rodar a API, é necessário ter o Node instalado e rodar os seguintes comandos.
 
-1. Após baixar o repositório, acesse a pasta api.
+1. Após baixar o repositório, acesse a pasta api pelo terminal ou cmd.
 2. Rode o comando "npm install"
 3. Rode esse comando para gerar os dados fake "npm run generate".
 4. Rode o comando "npm start" para iniciar a API.
