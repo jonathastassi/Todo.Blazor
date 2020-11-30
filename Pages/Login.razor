@@ -23,25 +23,25 @@
 
                     <button class="btn btn-primary">
                         @if (loading)
-                            {
-                                <span class="spinner-border spinner-border-sm mr-1"></span>
-                            }
-                            Login
-                        </button>
+                        {
+                            <span class="spinner-border spinner-border-sm mr-1"></span>
+                        }
+                        Login
+                    </button>
 
-                        <NavLink class="nav-link" href="/register">Criar uma nova conta</NavLink>
-                    </div>
-                    @if (!string.IsNullOrEmpty(error))
-                    {
-                        <div class="alert alert-danger mt-3 mb-0">@error</div>
-                    }
-                </EditForm>
-            </div>
+                    <NavLink class="nav-link" href="/register">Criar uma nova conta</NavLink>
+                </div>
+                @if (!string.IsNullOrEmpty(error))
+                {
+                    <div class="alert alert-danger mt-3 mb-0">@error</div>
+                }
+            </EditForm>
         </div>
-        <div class="card-footer"></div>
     </div>
+    <div class="card-footer"></div>
+</div>
 
-    @code {
+@code {
     private LoginForm model = new LoginForm();
     private bool loading;
     private string error;
@@ -61,8 +61,7 @@
         try
         {
             await AuthenticationService.Login(model);
-            var returnUrl = NavigationManager.QueryString("returnUrl") ?? "/";
-            NavigationManager.NavigateTo(returnUrl);
+            NavigationManager.NavigateTo("/");
         }
         catch (Exception ex)
         {

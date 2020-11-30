@@ -56,6 +56,9 @@ namespace todo.Services
             authInfo.accessToken = jwt;
 
             await this.localStorageService.SetItem("todo:auth", authInfo);
+
+            AuthInfo = authInfo;
+
             return response;
         }
 
@@ -82,6 +85,9 @@ namespace todo.Services
             authInfo.accessToken = jwt;
 
             await this.localStorageService.SetItem("todo:auth", authInfo);
+
+            AuthInfo = authInfo;
+
             return response;
         }
 
